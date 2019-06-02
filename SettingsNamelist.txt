@@ -1,0 +1,101 @@
+ &PHYSICS
+ Range = 0.02 0.04 0.06 0.08 0.10 0.12 0.14 0.16
+ mode = 'lin'
+ Para='XNUE'
+ CX = 3.6
+ ETG_FACTOR2 = -1.0
+ case_tag='lintglf'
+ kyarr=0.1           0.2           0.3           0.4           0.5           0.6
+    0.7           0.8           0.9           1.            1.22167735
+    1.49249555    1.823348      2.22754295    2.72133877    3.32459793
+    4.06158599    4.9619476     6.06189899    7.40568469    9.04735724
+   11.05295141   13.50314038   16.49648074   20.15337686   24.62092401
+   30.07882518   36.74661941   44.89251258   54.84416576   67.00187504
+   81.85467307  100.
+ ky_bdry=5.0
+ ialpha = 1
+ &2d
+ Para_x = 'Q_LOC'
+ Para_y = 'Q_PRIME_LOC'
+ para_x_eigen = 4
+ para_y_eigen = 0.4
+ Range_x = 2 4 6
+ Range_y = 0.4 0.8
+ kyarr = 0.2 1.0
+ /
+ /
+ &SETUP
+ tglf_flag = 'lin'
+ server='iris'
+ workDir = 
+ executable ='tglf -e . -n 1'
+ num_nodes=1
+ num_cores=16
+ wall_time=1:00:00
+ pbs_queue='medium'
+ /
+ &PLOTS
+ idimplt = 1
+ Para='XNUE'
+ mode = 'nonlin'
+ pow_kyarr = 1
+ kyarr=0.1           0.2           0.3           0.4           0.5           0.6
+    0.7           0.8           0.9           1.            1.22167735
+    1.49249555    1.823348      2.22754295    2.72133877    3.32459793
+    4.06158599    4.9619476     6.06189899    7.40568469    9.04735724
+   11.05295141   13.50314038   16.49648074   20.15337686   24.62092401
+   30.07882518   36.74661941   44.89251258   54.84416576   67.00187504
+   81.85467307  100.
+ Range = [5]
+ effnum = 6
+ ipltlhk=0
+ imnsExB = 1
+ ilogx = 1
+ indmode=0
+ ifield = 0
+ ParaVal = 0.1
+ kyballoon = 0.3
+ iwritelin = 0
+ iwriteflux = 0
+ iflwphy = 1
+ &2d
+ Para_x = 'Q_LOC'
+ Para_y = 'Q_PRIME_LOC'
+ para_x_eigen = 4
+ para_y_eigen = 0.4
+ ky_eigen = 0.2
+ Range_x = 2 4 6
+ Range_y = 0.4 0.8
+ kyarr = 0.2 1.0
+ ilogx = 0
+ ilogy = 0
+ Q_Exp = 1 3 1.0
+ Range_xscale = 1
+ Range_yscale = 1
+ /
+ /
+ &EXPERIMENT
+ shot = 
+ time = 
+ device = 
+ shots = 
+ times = 
+ runid = 
+ /
+ &REMOTE_SETUP
+ serverPicker = 'shenma'
+ workDir = '/cluster-scratch/jianx/OMFIT/runs/TGLFS_Scan'
+ server = 'jianx@iris'
+ tunnel = ''
+ /
+ &MODULE
+ ID = 'TGLF_SCAN'
+ edited_by = 'jianx'
+ date = '03 Jul 2016  15:34'
+ version = u''
+ contact = '' 'xiangjian@hust.edu.cn'
+ /
+ &DEPENDENCIES
+ linout='/home/jianx/proname/deploy/tglfrun/lintglf/tglf_para_lin__scan.txt'
+ fluxout='/home/jianx/proname/deploy/tglfrun/nontglf/tglf_para_non__scan.txt'
+ /

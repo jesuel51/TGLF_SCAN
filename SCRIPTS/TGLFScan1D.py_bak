@@ -1,0 +1,51 @@
+# this script is used to scan the Para of TGLF
+Range=root['SETTINGS']['PHYSICS']['Range']
+para=root['SETTINGS']['PHYSICS']['Para']
+paraextend=['RLNS','RLTS','VPAR','VPAR_SHEAR','VTS_SHEAR']
+Para=[]
+if para in paraextend:
+    for k in range(2,5):
+        Para=Para+[para+'_'+str(k)]
+    valueold=zeros(3)
+else:
+    Para=array([para])
+    valueold=zeros(1)
+# start to scan
+mode = root['SETTINGS']['PHYSICS']['mode']
+try:
+#    valueold=root['INPUTS']['input.tglf'][Para]
+    count=0
+    for p in Para:
+        valueold[count]=root['INPUTS']['input.tglf'][p]
+        if p=='ZEFF':
+            XNUEold=root['INPUTS']['input.tglf']['XNUE']
+        count=count+1
+    if para not in root['OUTPUTScan'].keys():
+        root['OUTPUTScan'][para]=OMFITtree()
+    if mode not in root['OUTPUTScan'][para].keys():
+#        print(mode)
+        root['OUTPUTScan'][para][mode]=OMFITtree()
+#    root['INPUTScan'][para]=OMFITtree()
+    for scalefactor in Range:
+        count2=0
+        for p in Para:
+            root['INPUTS']['input.tglf'][p]=scalefactor * valueold[count2]
+            if p == 'ZEFF':
+                root['INPUTS']['input.tglf']['XNUE']=scalefactor * XNUEold
+            count2=count2+1
+#        root['INPUTScan'][para][scalefactor]=OMFITtree()
+#        for files in root['INPUTS']:
+#            root['INPUTScan'][para][scalefactor][files]=root['INPUTS'][files]
+        root['SCRIPTS']['runTGLF.py'].run()
+        root['OUTPUTScan'][para][mode][str(scalefactor)[0:4]]=OMFITtree()
+        for files in root['OUTPUTS']:
+            root['OUTPUTScan'][para][mode][str(scalefactor)[0:4]][files]=root['OUTPUTS'][files]
+except:
+    print('There is no such a Parameters, please check again.')
+# recoved the original data
+count=0
+for p in Para:
+    root['INPUTS']['input.tglf'][p]=valueold[count]
+    count=count+1
+    if p=='ZEFF':
+        root['INPUTS']['input.tglf']['XNUE']=XNUEold

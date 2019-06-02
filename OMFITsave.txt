@@ -1,0 +1,40 @@
+['INPUTS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['INPUTS']['input.tglf'] <-:-:-> OMFITgaCode <-:-:-> ./INPUTS/input.tglf <-:-:-> {}
+['OUTPUTS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['INPUTScan'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['OUTPUTScan'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['OUTPUTScan2D'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['SCRIPTS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['SCRIPTS']['TGLFScan1D.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/TGLFScan1D.py <-:-:-> {}
+['SCRIPTS']['TGLFScan2D.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/TGLFScan2D.py <-:-:-> {}
+['SCRIPTS']['subscan_lin.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/subscan_lin.py <-:-:-> {}
+['SCRIPTS']['subscan_lin_2d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/subscan_lin_2d.py <-:-:-> {}
+['SCRIPTS']['subscan_nonlin.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/subscan_nonlin.py <-:-:-> {}
+['SCRIPTS']['subscan_nonlin_2d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/subscan_nonlin_2d.py <-:-:-> {}
+['PLOTS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['PLOTS']['plttglf.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/plttglf.py <-:-:-> {}
+['PLOTS']['plttglf_2d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/plttglf_2d.py <-:-:-> {}
+['PLOTS']['plttglf_2d21d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/plttglf_2d21d.py <-:-:-> {}
+['PLOTS']['lintglf.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/lintglf.py <-:-:-> {}
+['PLOTS']['lintglf_2d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/lintglf_2d.py <-:-:-> {}
+['PLOTS']['lintglf_2d21d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/lintglf_2d21d.py <-:-:-> {}
+['PLOTS']['nontglf.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/nontglf.py <-:-:-> {}
+['PLOTS']['nontglf_2d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/nontglf_2d.py <-:-:-> {}
+['PLOTS']['nontglf_2d21d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/nontglf_2d21d.py <-:-:-> {}
+['PLOTS']['ptcflx.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/ptcflx.py <-:-:-> {}
+['PLOTS']['linspec.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/linspec.py <-:-:-> {}
+['PLOTS']['intensity.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/intensity.py <-:-:-> {}
+['PLOTS']['eigenfunc.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/eigenfunc.py <-:-:-> {}
+['PLOTS']['eigenfunc_2d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/eigenfunc_2d.py <-:-:-> {}
+['Cases'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['GUIS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['IPS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['SETTINGS'] <-:-:-> OMFITnamelist <-:-:-> ./SettingsNamelist.txt <-:-:-> {}
+['SETTINGS']['SETUP']['workDir'] <-:-:-> OMFITexpression <-:-:-> _"OMFITworkDir(root,'')" <-:-:-> {}
+['SETTINGS']['EXPERIMENT']['shot'] <-:-:-> OMFITexpression <-:-:-> _"try:\n    return_variable=OMFITmodules[-2]['SETTINGS']['EXPERIMENT']['shot']\nexcept:\n    return_variable=MainSettings['EXPERIMENT']['shot']\n" <-:-:-> {}
+['SETTINGS']['EXPERIMENT']['time'] <-:-:-> OMFITexpression <-:-:-> _"try:\n    return_variable=OMFITmodules[-2]['SETTINGS']['EXPERIMENT']['time']\nexcept:\n    return_variable=MainSettings['EXPERIMENT']['time']\n" <-:-:-> {}
+['SETTINGS']['EXPERIMENT']['device'] <-:-:-> OMFITexpression <-:-:-> _"try:\n    return_variable=OMFITmodules[-2]['SETTINGS']['EXPERIMENT']['device']\nexcept:\n    return_variable=MainSettings['EXPERIMENT']['device']\n" <-:-:-> {}
+['SETTINGS']['EXPERIMENT']['shots'] <-:-:-> OMFITexpression <-:-:-> _"try:\n    return_variable=OMFITmodules[-2]['SETTINGS']['EXPERIMENT']['shots']\nexcept:\n    return_variable=MainSettings['EXPERIMENT']['shots']\n" <-:-:-> {}
+['SETTINGS']['EXPERIMENT']['times'] <-:-:-> OMFITexpression <-:-:-> _"try:\n    return_variable=OMFITmodules[-2]['SETTINGS']['EXPERIMENT']['times']\nexcept:\n    return_variable=MainSettings['EXPERIMENT']['times']\n" <-:-:-> {}
+['SETTINGS']['EXPERIMENT']['runid'] <-:-:-> OMFITexpression <-:-:-> _"try:\n    return_variable=OMFITmodules[-2]['SETTINGS']['EXPERIMENT']['runid']\nexcept:\n    return_variable=MainSettings['EXPERIMENT']['runid']\n" <-:-:-> {}
+['help'] <-:-:-> OMFITascii <-:-:-> ./help.txt <-:-:-> {}
